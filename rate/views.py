@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import UpdateProfile
+from .forms import UpdateProfile, UploadProjects
 from django.contrib.auth import logout
 
 @login_required
 def home(request):
+    project = Posts.objects.all()
 
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'project': project})
 
 @login_required
 def profile(request, prof_id):
@@ -44,3 +45,26 @@ def updateProfile(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def upload(request):
+
+    current_user = request.user
+    profile = Profile.objects.get(user= request.user.id)
+
+    if request.method == 'POST':
+        form = UploadProjects(request.POST, request.FILES)
+
+        if form.is_valid():
+            project = form.save(commit=True)
+            project.profile = current_user
+            project.user_prof = profile
+            project.save()
+            print('Saved')
+
+            return redirect('home')
+
+    else:
+        form = UploadProjects()
+
+    return render(request, 'upload.html', {'form': form})
