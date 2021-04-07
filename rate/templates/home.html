@@ -4,62 +4,62 @@
 
 {% block content %}
 
-<div class="columns is-mobile">
-  <div class="column is-full">
-
-    <div class="card" style="border: none;">
-      <div class="card-content">
-
-        <div class="content">
-          <i>
-            <p style="font-family: 'Patrick Hand', cursive; font-size: 2rem;">Hello and welcome. <br>
-              It a beautiful day to post your projects and get them rated.
-            <br>This platform helps you grow in terms of confidence and skills. Knowing what users think about your project helpsbetter understand what they need and want, 
-          this inturn helps you grow exponential as you will be in a better position to created user oriented projects and designs.</p>
-          </i>
+<div class="container">
+  <div class="columns is-mobile">
+    <div class="column is-full">
+  
+      <div class="card" style="border: none;">
+        <div class="card-content">
+  
+          <div class="content">
+            <i>
+              <p style="font-family: 'Patrick Hand', cursive; font-size: 2rem;">Hello and welcome. <br>
+                It a beautiful day to post your projects and get them rated.
+              <br>This platform helps you grow in terms of confidence and skills. Knowing what users think about your project helpsbetter understand what they need and want, 
+            this inturn helps you grow exponential as you will be in a better position to created user oriented projects and designs.</p>
+            </i>
+          </div>
         </div>
       </div>
+      
+      
     </div>
-    
-    
   </div>
 </div>
 
-    <div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
-        <div class="column">
-            <img src="https://i.pinimg.com/originals/01/18/b7/0118b7ac275335c391166759f89f040a.png " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        </div>
-    </div>
+<div class="container">
+  {% if user.is_authenticated %}
+  
 
-    <div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
-        <div class="column">
-            <img src="https://i.pinimg.com/originals/01/18/b7/0118b7ac275335c391166759f89f040a.png " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        </div>
-    </div>
+  
+  {% if project %}
 
-    <div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
-        <div class="column">
-            <img src="https://i.pinimg.com/originals/01/18/b7/0118b7ac275335c391166759f89f040a.png " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        </div>
-    </div>
+  
+  {% for proj in project %}
 
-    <div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
-        <div class="column">
-            <img src="https://i.pinimg.com/originals/01/18/b7/0118b7ac275335c391166759f89f040a.png " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        </div>
+  <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
+    <div class="column">
+        <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+        <p> {{proj.project_name}} </p>
+        <p> {{prof.descritpion}} </p>
+        <p> <a href="{{proj.project_link}} ">Live Link</a></p>
+        <p>Score: </p>
+        <p>Rate</p>
+        <p>by :{{proj.user_prof.user}} </p>
     </div>
+</div>
 
-    <div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
-        <div class="column">
-            <img src="https://i.pinimg.com/originals/01/18/b7/0118b7ac275335c391166759f89f040a.png " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        </div>
-    </div>
+    
+  {% endfor %}
 
-    <div class="columns is-mobile mr-1 my-2" style="display: inline-block; border-color: blue; ">
-        <div class="column">
-            <img src="https://i.pinimg.com/originals/01/18/b7/0118b7ac275335c391166759f89f040a.png " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        </div>
-    </div>
+  {%else%}
+		<h3 class="text-center">Log in to view this content</h3>	
+
+  {% endif %}
+    
+{% endif %}
+  
+</div>
 
 {% endblock content %}
     
