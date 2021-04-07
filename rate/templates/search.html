@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="container">
+            <div class="row">
+    
+                
+                {% if posts %}
+    
+                <h2 style="color: greenyellow;">Found {{posts|length}} of searched term {{message}} </h2>
+                    {% else %}
+    
+                    <h2 style="color: red;">Found no articles for the search term {{message}} </h2>
+                {% endif %}
+                    
+            </div>
+    
+            <div class="row">
+                
+                {% if posts %}
+                {% for post in posts %}
+                <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
+                    <div class="column">
+                      <p>by :{{post.user_prof.user}} </p>
+                      <img src=" {{post.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+                      <p> {{post.project_name}} </p>
+                      <p> {{post.descritpion}} </p>
+                      <p> <a href="{{post.project_link}} ">Live Link</a></p>
+                      <p> <a href="{% url 'single' post.id %}">Review</a> </p>
+                      
+                    </div>
+                </div>
+               </div>
+                    
+                    
+                {% endfor %}
+                    
+                {% endif %}
+                    
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

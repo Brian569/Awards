@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+{% if posts %}
+
+
+{% for post in posts %}
+
+{{post.project_name}}
+
+<a href="{{post.project_link}}">Insta</a>
+{% endfor %}
+    
+    
+{% endif %}
+
+
+{% if review %}
+
+{% for rev in review %}
+
+
+<table>
+    <tr>
+        
+        <td>Design</td>
+        <td>Userbility</td>
+        <td>Content</td>
+        <td>Comments</td>
+        <td>Average</td>
+    </tr>
+    <td>{{rev.design}}</td>
+    <td>{{rev.usability}}</td>
+    <td>{{rev.content}}</td>
+    <td>{{rev.comment}}</td>
+    <td>Average here</td>
+</table>
+{% endfor %}
+    
+    
+{% endif %}
+<p><a href="{% url 'reviews' user.id %}"> Rate</a></p>
+    
+    
+{% endblock content %}
+    
