@@ -1,12 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import UpdateProfile, UploadProjects
+from .forms import UpdateProfileForm, UploadProjectsForm, ReviewProjectForm
 from django.contrib.auth import logout
+from django.contrib import messages
+
 
 @login_required
 def home(request):
-    project = Posts.objects.all()
+    project = Posts.get_post()
+    
 
     return render(request, 'home.html', {'project': project})
 
@@ -23,10 +26,10 @@ def updateProfile(request):
     current_user = request.user
     if request.method == 'POST':
         if Profile.objects.filter(user_id = current_user).exists():
-            form = UpdateProfile(request.POST, request.FILES, instance= Profile.objects.get(user_id = current_user))
+            form = UpdateProfileForm(request.POST, request.FILES, instance= Profile.objects.get(user_id = current_user))
 
         else:
-            form = UpdateProfile(request.POST, request.FILES)
+            form = UpdateProfileForm(request.POST, request.FILES)
             
         if form.is_valid():
             user_profile = form.save(commit=False)
@@ -36,9 +39,9 @@ def updateProfile(request):
             return redirect('profile', current_user.id)
     else:
         if Profile.objects.filter(user_id = current_user).exists():
-            form = UpdateProfile(instance = Profile.objects.get(user_id = current_user))
+            form = UpdateProfileForm(instance = Profile.objects.get(user_id = current_user))
         else:
-            form = UpdateProfile()
+            form = UpdateProfileForm()
 
     return render(request, 'update_profile.html', {'form': form})
 
@@ -53,7 +56,7 @@ def upload(request):
     profile = Profile.objects.get(user= request.user.id)
 
     if request.method == 'POST':
-        form = UploadProjects(request.POST, request.FILES)
+        form = UploadProjectsForm(request.POST, request.FILES)
 
         if form.is_valid():
             project = form.save(commit=True)
@@ -65,6 +68,58 @@ def upload(request):
             return redirect('home')
 
     else:
-        form = UploadProjects()
+        form = UploadProjectsForm()
 
     return render(request, 'upload.html', {'form': form})
+
+@login_required
+def reviews(request, pk):
+   
+    project = get_object_or_404(Posts, pk=pk)
+    current_user = request.user
+    if request.method == 'POST':
+        form = ReviewProjectForm(request.POST)
+        if form.is_valid():
+            design = form.cleaned_data['design']
+            usability = form.cleaned_data['usability']
+            content = form.cleaned_data['content']
+            review = form.save(commit=False)
+            review.project = project
+            review.user = current_user
+            review.design = design
+            review.usability = usability
+            review.content = content
+            review.save()
+            print('saves')
+
+
+            return redirect('home')
+
+    else:
+        form = ReviewProjectForm()
+        
+    return render(request, 'review.html', {'form' : form, 'user': current_user})
+
+@login_required
+def single(request, post_id):
+
+    posts = Posts.objects.filter(pk=post_id)
+    review  = Review.objects.filter(project=post_id)
+    
+    
+    
+
+    return render(request, 'single.html', {'review': review, 'posts': posts})
+
+@login_required
+def search(request):
+    if 'post' in request.GET and request.GET['post']:
+        tearm = request.GET.get('post')
+        searched = Posts.find(tearm)
+        message = f" {tearm} "
+
+        return render(request, 'search.html', {'message': message, 'posts' : searched})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
