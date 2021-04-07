@@ -30,7 +30,47 @@ class Posts(models.Model):
     descrition = models.CharField(max_length=500)
     project_link = models.CharField(max_length=200)
     project_image = CloudinaryField(blank=True)
+
     user_prof = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.project_name
+
+    @classmethod
+    def get_post(cls):
+        posts = Posts.objects.al()
+        return posts
+    
+    @classmethod
+    def find(cls, tearm):
+        posts = Posts.objects.filter(project_name__icontains=tearm)
+        return posts
+
+        
+
+RATE_CHOICES = [
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+    (6, '6'),
+    (7, '7'),
+    (8, '8'),
+    (9, '9'),
+    (10, '10')
+]
+
+class Review(models.Model):
+    project = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    design = models.IntegerField(choices=RATE_CHOICES, default=0)
+    usability = models.PositiveIntegerField(choices=RATE_CHOICES, default=0)
+    content = models.PositiveIntegerField(choices=RATE_CHOICES, default=0)
+    comment = models.TextField(max_length=500)
+
+
+    @classmethod
+    def get_review(cls):
+        review = Review.objects.all()
+        return review
