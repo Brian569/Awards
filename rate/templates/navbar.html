@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar stick-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="{% url 'home' %}">
         <img src="https://www.geographics.com/tpl_images/Award-Geographics-Clip-Art-7-L.png" style="width: 15vmin; height: 12vmin;" >
@@ -25,7 +25,7 @@
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item"href="">
+            <a class="navbar-item"href="{% url 'upload' %}">
                 Post Project
             </a>
             <a class="navbar-item" href="{% url 'updateProfile' %}">
