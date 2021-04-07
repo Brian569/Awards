@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+
+{% block content%}
+<br><br><br><br>
+<h1 class="text-center">Update Profile</h1>
+<div class="container">
+	<div class="columns is-mobile">
+		<div class="column is-half is-offset-one-quarter">
+			<form  action="{% url 'updateProfile'%}" method="post" enctype="multipart/form-data">
+		        {%csrf_token%}
+
+		        {% bootstrap_form form%}
+		       
+		        <div class="buttons">
+					<input type="submit" class="button is-info" value="Update">
+					<a class="btn btn-sm btn-outline-dark" href="{% url 'home' %}"> Cancel</a>
+				</div>  
+	        </form>
+			
+		
+		</div>
+	  </div>
+	
+			
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+{% block content%}
+<div class="container">
+	{% if profile%}
+
+	{%for profile in profile%}
+	<br><br>
+		<div class="row" style="padding-bottom:20px">
+		
+			<div class="col-md-4">
+				<img class="center-block img-responsive img-circle" style="border-radius: 50%; height: 40vmin; width: 40vmin;" src="{{profile.profile_pic.url}}" alt="" style="width:170px; height:170px">
+			</div>
+			<div class="col-md-8">
+				<br><br><br>
+				<h2><strong><i>@{{profile.user}}</i></strong></h2>
+				<br><br>				
+				
+				<div class="card" style="border-radius: 12px; width: 18rem;">
+					<div class="card-title">
+						<h5 class="text-muted" style=" margin-left: 20px;"><i>Bio</i></h5>
+					</div>
+					<div class="card-body">
+						<h4>{{profile.bio}}</h4>
+					</div>
+				</div>
+				<br>
+					{%if profile.user.id == user.id%}
+						<a class="btn btn-sm btn-success" href="">Post Project</a>
+						<a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> Update Profile</a>
+						<a class="btn btn-sm btn-dark" href="{% url 'home' %}"> Home</a>
+						
+					{%else%}
+						 {%if is_follow%}
+						 <a href="" class="btn btn-danger">Unfollow</a>
+						 {%else%}
+						 <a href="" class="btn btn-success">Follow</a>
+				         {%endif%}
+				        
+					{%endif%}
+			</div>
+		
+		</div>
+	
+	{%endfor%}
+	{%else%}
+
+			<div class="col-md-4">
+				<img class="center-block img-responsive img-circle" src="../../static/images/default.png" alt="" style="width:170px; height:170px">
+			</div>
+			<div class="col-md-8">
+				<h4>An Awesome Bio Will Appear Here</h4>
+					<a class="btn btn-sm btn-success" href="">Post Project</a>
+					<a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> Update Profile</a>
+					
+			</div>
+		
+		
+
+	{%endif%}	  
+</div>
+{%endblock%}
+
+
