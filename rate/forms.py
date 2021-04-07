@@ -1,14 +1,22 @@
 from django import forms
-from .models import Posts, Profile
+from .models import Posts, Profile, Review
 
-class UpdateProfile(forms.ModelForm):
+
+class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'profile_pic']
         exclude = ['user']
 
-class UploadProjects(forms.ModelForm):
+class UploadProjectsForm(forms.ModelForm):
     class Meta:
         model = Posts
         fields = ['project_name', 'descrition', 'project_link', 'project_image']
         exclude = ['user_prof']
+
+class ReviewProjectForm(forms.ModelForm):
+    class Meta:
+        model = Review
+
+        fields = ['design', 'content', 'usability', 'comment']
+        exclude = ['project', 'user']
