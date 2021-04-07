@@ -17,6 +17,7 @@
             <small><i class="material-icons">account_circle</i></small>
             {{user.username}} 
         </a>
+
      
   
         <div class="navbar-item has-dropdown is-hoverable">
@@ -36,8 +37,7 @@
         
           <a class="nav-item active"" href=" {% url 'logouts' %} " style="margin-right: 15px; padding-right: 15px;"><span class="material-icons">
             logout
-            </span>Log out</a>
-       
+            </span>Log out</a>       
 
         {% else %}
 
@@ -48,6 +48,21 @@
           
      {% endif %}
           </div>
+          
+        </div>
+
+        <div >
+
+          <form class="navbar-form my-2 " style="margin-left: 60vmin;" role="search" action="{% url 'search' %}">
+  
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search post" name="post">
+              <div class="input-group-btn">
+                <button class="btn btn-default btn-outline-dark " type="submit"><i class="glyphicon glyphicon-search">Submit</i></button>
+              </div>
+            </div>
+  
+          </form>
         </div>
       </div>     
     </div>
