@@ -5,26 +5,17 @@
 {% block content %}
 
 <div class="container">
-  <div class="columns is-mobile">
-    <div class="column is-full">
-  
-      <div class="card" style="border: none;">
-        <div class="card-content">
-  
-          <div class="content">
-            <i>
-              <p style="font-family: 'Patrick Hand', cursive; font-size: 2rem;">Hello and welcome. <br>
-                It a beautiful day to post your projects and get them rated.
-              <br>This platform helps you grow in terms of confidence and skills. Knowing what users think about your project helpsbetter understand what they need and want, 
-            this inturn helps you grow exponential as you will be in a better position to created user oriented projects and designs.</p>
-            </i>
-          </div>
-        </div>
-      </div>
-      
-      
+ 
+    <div class=" column is-three-fifths is-offset-one-fifth ">
+      <i>
+        <p ><b>Hello and welcome</b> <br>
+          It a beautiful day to post your projects and get them rated.
+        <br>This platform helps you grow in terms of confidence and skills. <br> Knowing what users think about your project helpsbetter understand what they need and want, <br> 
+      this inturn helps you grow exponential as you will be in a better position to created user oriented projects and designs.</p>
+      </i>
     </div>
-  </div>
+
+
 </div>
 
 <div class="container">
@@ -39,13 +30,13 @@
 
   <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
     <div class="column">
-        <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-        <p> {{proj.project_name}} </p>
-        <p> {{prof.descritpion}} </p>
-        <p> <a href="{{proj.project_link}} ">Live Link</a></p>
-        <p>Score: </p>
-        <p>Rate</p>
-        <p>by :{{proj.user_prof.user}} </p>
+      <p>by :{{proj.user_prof.user}} </p>
+      <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+      <p> {{proj.project_name}} </p>
+      <p> {{prof.descritpion}} </p>
+      <p> <a href="{{proj.project_link}} ">Live Link</a></p>
+      <p> <a href="{% url 'single' proj.id %}">Review</a> </p>
+      
     </div>
 </div>
 
