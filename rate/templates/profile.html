@@ -25,7 +25,7 @@
 				</div>
 				<br>
 					{%if profile.user.id == user.id%}
-						<a class="btn btn-sm btn-success" href="">Post Project</a>
+						<a class="btn btn-sm btn-success" href="{% url 'upload' %}">Post Project</a>
 						<a class="btn btn-sm btn-primary" href="{% url 'updateProfile' %}"> Update Profile</a>
 						<a class="btn btn-sm btn-dark" href="{% url 'home' %}"> Home</a>
 						
