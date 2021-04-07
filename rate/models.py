@@ -38,7 +38,7 @@ class Posts(models.Model):
 
     @classmethod
     def get_post(cls):
-        posts = Posts.objects.al()
+        posts = Posts.objects.all()
         return posts
     
     @classmethod
@@ -46,7 +46,7 @@ class Posts(models.Model):
         posts = Posts.objects.filter(project_name__icontains=tearm)
         return posts
 
-        
+
 
 RATE_CHOICES = [
     (1, '1'),
