@@ -3,6 +3,7 @@ from .views import (
     home, profile,
     updateProfile,
     logout_view, upload,
+    reviews, single, search
     )
 
 urlpatterns = [
@@ -10,5 +11,8 @@ urlpatterns = [
     re_path('profile/(\d+)', profile, name='profile'),
     path('update/', updateProfile, name = 'updateProfile'),
     path('logout/', logout_view, name='logouts'),
-    path('uplaod/', upload, name = 'upload')
+    path('uplaod/', upload, name = 'upload'),
+    re_path('reviews/(\d+)', reviews, name = 'reviews'),
+    re_path('single/(\d+)', single, name = 'single'),
+    path('search/', search, name = 'search'),
 ]
