@@ -134,5 +134,5 @@ LOGIN_REDIRECT_URL = '/'
 cloudinary.config( 
   cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME', 'dsxfbf0gr'), 
   api_key = os.environ.get('API_KEY', '453724731425747'), 
-  api_secret = os.environ.get('API_SECRET', '45afaf620fdf35079eb17ed162037aedb238d89ed4fa43bf3d21f7ce51df8226') 
+  api_secret = os.environ.get('API_SECRET',) 
 )
