@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'XsLSJ6L86Sk3RCln7mjln7hPkQ')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['review-apk.herokuapp.com']
+ALLOWED_HOSTS = ['review-apk.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

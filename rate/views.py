@@ -99,7 +99,7 @@ def reviews(request, pk):
             print('saves')
 
 
-            return redirect('home')
+            return redirect('projects')
 
     else:
         form = ReviewProjectForm()

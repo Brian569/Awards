@@ -63,8 +63,8 @@ body{
 .logo{
   width: 120px;
   cursor: pointer;
-  border-radius: 50%;
-  height: 15vmin;
+ 
+  height: 7vmin;
 }
 .navbar ul li{
   list-style: none;
@@ -181,108 +181,6 @@ button:hover{
   background-image: linear-gradient(rgba(0,0,0,0.44), rgba(0,0,0,0.44)), url(https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/banff_rivolta.jpg?crop=0,331,4032,2217&wid=4000&hei=2200&scl=1.008);
   background-size: cover;
   background-position: center;
-}
-
-.navbar{
-  width: 85%;
-  margin: auto;
-  padding: 30px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo{
-  width: 120px;
-  cursor: pointer;
-  border-radius: 50%;
-  height: 15vmin;
-}
-.navbar ul li{
-  list-style: none;
-  display: inline-block;
-  margin: 0 20px;
-  position: relative;
-}
-.navbar ul li a{
-  text-decoration: none;
-  color: #fff;
-  text-transform: uppercase;
-
-}
-.navbar ul li::after{
-  content: '';
-  height: 3px;
-  width:0;
-  background: #009688;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  transition: 0.5s;
-  border: 10px;
-}
-.navbar ul li:hover::after{
-  width: 100%;
-
-}
-.content{
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  color: #fff;
-}
-.content p{
-  font-size: 20px auto;
-  font-weight: 100;
-  line-height: 25px;
-}
-.content h1{
-  font-size: 70px;
-  margin-top: 80px;
-}
-
-button{
-  width: 200px;
-  padding: 15px 0;
-  text-align: center;
-  margin: 20px 10px;
-  border-radius: 25px;
-  font-weight: bold;
-  border: 2px solid #009688;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-span{
-  background: #009688;
-  height: 100%;
-  width: 0;
-  border-radius: 25px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  transition: 0.5s;
-}
-
-button:hover span{
-  width: 100%;
-
-}
-button:hover{
-  border: none;
-}
-
-.checkbtn{
-  font-size: 40px;
-  color: #fff;
-  line-height: 90px;
-  margin-left: 0;
-  cursor: pointer;
-  display: none;
 }
 #check{
   display: none;
