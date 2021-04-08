@@ -3,11 +3,13 @@ from .views import (
     home, profile,
     updateProfile,
     logout_view, upload,
-    reviews, single, search
+    reviews, single, search,
+    projects
     )
 
 urlpatterns = [
     path('', home, name='home'),
+    path('projects/', projects, name='projects'),
     re_path('profile/(\d+)', profile, name='profile'),
     path('update/', updateProfile, name = 'updateProfile'),
     path('logout/', logout_view, name='logouts'),
