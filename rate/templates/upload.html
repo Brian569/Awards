@@ -5,15 +5,25 @@
 <h1 class="text-center">Upload your Project</h1>
 <div class="columns is-mobile">
 	<div class="column is-three-fifths is-offset-one-fifth">
-		<form  action="{% url 'upload'%}" method="post" enctype="multipart/form-data">
+		<form style="width: 40%;" class="text-centered" action="{% url 'upload'%}" method="post" enctype="multipart/form-data">
 			{%csrf_token%}
 	
 			{% bootstrap_form form%}
 			
-			<input type="submit" class="btn btn-success btn-default btn-block" value="Post">
+			<input  type="submit" class="btn btn-success btn-default btn-block" value="Post">
 					
 		</form>
 	</div>
   </div>
+
+  <style>
+	  *{
+		  color: #fff;
+		  
+	  }
+	  input{
+		  width: 40%;
+	  }
+  </style>
 {% endblock content %}
     

@@ -24,7 +24,7 @@
                 {% for post in posts %}
                 <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
                     <div class="column">
-                      <p>by :{{post.user_prof.user}} </p>
+                      <p>Posted by :{{post.user_prof.user}} </p>
                       <img src=" {{post.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
                       <p> {{post.project_name}} </p>
                       <p> {{post.descritpion}} </p>
@@ -43,5 +43,38 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .column{
+            color: #fff;
+        }
+        .column p a{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+.column p a{
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+
+}
+.column p a::after{
+  content: '';
+  height: 3px;
+  width:0;
+  background: #009688;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+  border: 10px;
+}
+.column p a:hover::after{
+  width: 100%;
+
+}
+    </style>
 {% endblock content %}
     

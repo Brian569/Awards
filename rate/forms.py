@@ -5,7 +5,7 @@ from .models import Posts, Profile, Review
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'profile_pic']
+        fields = ['bio', 'profile_pic', 'email', 'phone_number']
         exclude = ['user']
 
 class UploadProjectsForm(forms.ModelForm):

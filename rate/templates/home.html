@@ -1,56 +1,33 @@
 {% extends 'base.html' %}
 
-{% load bootstrap4 %}
 
 {% block content %}
+<div class="banner">
+  <div class="content">
+    <h1>POST AND GET YOUR PROJECT REVIEWED</h1>
+    <p ><b>Hello and welcome</b> <br>
+      It a beautiful day to post your projects and get them rated.
+    <br>This platform helps you grow in terms of confidence and skills. <br> Knowing what users think about your project helpsbetter understand what they need and want, <br> 
+  this inturn helps you grow exponential as you will be in a better position to created user oriented projects and designs.</p>
 
-<div class="container">
- 
-    <div class=" column is-three-fifths is-offset-one-fifth ">
-      <i>
-        <p ><b>Hello and welcome</b> <br>
-          It a beautiful day to post your projects and get them rated.
-        <br>This platform helps you grow in terms of confidence and skills. <br> Knowing what users think about your project helpsbetter understand what they need and want, <br> 
-      this inturn helps you grow exponential as you will be in a better position to created user oriented projects and designs.</p>
-      </i>
+  <form class="navbar-form my-2 " style="margin-left: 60vmin;" role="search" action="{% url 'search' %}">
+
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search project" name="post">
     </div>
 
-
-</div>
-
-<div class="container">
-  {% if user.is_authenticated %}
+  </form>
   
-
-  
-  {% if project %}
-
-  
-  {% for proj in project %}
-
-  <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
-    <div class="column">
-      <p>by :{{proj.user_prof.user}} </p>
-      <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-      <p> {{proj.project_name}} </p>
-      <p> {{prof.descritpion}} </p>
-      <p> <a href="{{proj.project_link}} ">Live Link</a></p>
-      <p> <a href="{% url 'single' proj.id %}">Review</a> </p>
-      
+    <div class="">
+      <button type="button" ><span></span> <a href="{% url 'projects' %}">PROJECTS</a> </button>
+      <button type="button"><span></span> <a href="{% url 'upload' %}">POST PROJECT</a></button>
     </div>
+  </div>
+
 </div>
 
-    
-  {% endfor %}
-
-  {%else%}
-		<h3 class="text-center">Log in to view this content</h3>	
-
-  {% endif %}
-    
-{% endif %}
-  
-</div>
 
 {% endblock content %}
     
+
+

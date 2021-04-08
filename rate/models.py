@@ -8,6 +8,8 @@ class Profile(models.Model):
     bio = models.CharField(max_length = 300,blank = True,default = 'Awesome Bio Will Appear Here')
     profile_pic = CloudinaryField(blank=True)
     user = models.ForeignKey(User, on_delete = models.CASCADE)
+    email = models.EmailField(max_length=100, blank=True)
+    phone_number = models.IntegerField(blank=True, null=True)
     
     def create_profile(sender, instance, created, **kwargs):
         if created:

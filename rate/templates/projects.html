@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    
+
+<div class="container">
+ 
+  {% if user.is_authenticated %}
+  
+  
+  
+  {% if project %}
+  
+  
+  {% for proj in project %}
+  
+  <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
+    <div class="column">
+      <p>by :{{proj.user_prof.user}} </p>
+      <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+      <p> {{proj.project_name}} </p>
+      <p> {{prof.descritpion}} </p>
+      <p> <a href="{{proj.project_link}} ">Live Link</a></p>
+      <p> <a href="{% url 'single' proj.id %}">Review</a> </p>
+      
+    </div>
+  </div>
+  
+    
+  {% endfor %}
+  
+  {%else%}
+    <h3 class="text-center">Log in to view this content</h3>	
+  
+  {% endif %}
+    
+  {% endif %}
+  
+  </div>
+  <style>
+    .column{
+        color: #fff;
+    }
+    .column p a{
+list-style: none;
+display: inline-block;
+margin: 0 20px;
+position: relative;
+}
+.column p a{
+text-decoration: none;
+color: #fff;
+text-transform: uppercase;
+
+}
+.column p a::after{
+content: '';
+height: 3px;
+width:0;
+background: #009688;
+position: absolute;
+left: 0;
+bottom: -10px;
+transition: 0.5s;
+border: 10px;
+}
+.column p a:hover::after{
+width: 100%;
+
+}
+</style>
+{% endblock content %}
+    
