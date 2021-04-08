@@ -2,47 +2,42 @@
 
 
 {% block content %}
-   <body>
-       
-    <div class="banner">
-        <div class="content" style="padding-top: 30%;">
-            <div class="container">
- 
-                {% if user.is_authenticated %}
-                
-                
-                
-                {% if project %}
-                
-                
-                {% for proj in project %}
-                
-                <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
-                  <div class="column">
-                     <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-                    <p> {{proj.project_name}} </p>
-                    <p> {{prof.descritpion}} </p>
-                    <p> <a href="{{proj.project_link}} ">Live Link</a></p>
-                    <p> <a href="{% url 'single' proj.id %}">Review</a> </p>
-                    
-                  </div>
-                </div>
-                
-                  
-                {% endfor %}
-                
-                {%else%}
-                  <h3 style="color: white;" class="text-center">No projects posted</h3>	
-                
-                {% endif %}
-                  
-                {% endif %}
-                
-                </div>
-        </div>
-    </div>
-   </body>
+    
 
+<div class="container">
+ 
+  {% if user.is_authenticated %}
+  
+  
+  
+  {% if project %}
+  
+  
+  {% for proj in project %}
+  
+  <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
+    <div class="column">
+      
+      <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+      <p> {{proj.project_name}} </p>
+      <p> {{prof.descritpion}} </p>
+      <p> <a href="{{proj.project_link}} ">Live Link</a></p>
+      <p> <a href="{% url 'single' proj.id %}">Review</a> </p>
+      
+    </div>
+  </div>
+  
+    
+  {% endfor %}
+  
+  {%else%}
+    <h3 style="color: white;" class="text-center">No projects posted</h3>	
+  
+  {% endif %}
+    
+  {% endif %}
+  
+  </div>
   <style>
     .column{
         color: #fff;
