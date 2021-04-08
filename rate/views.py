@@ -7,6 +7,12 @@ from django.contrib import messages
 
 
 @login_required
+def projects(request):
+    project = Posts.get_post()
+    
+
+    return render(request, 'projects.html', {'project': project})
+@login_required
 def home(request):
     project = Posts.get_post()
     
@@ -106,9 +112,6 @@ def single(request, post_id):
     posts = Posts.objects.filter(pk=post_id)
     review  = Review.objects.filter(project=post_id)
     
-    
-    
-
     return render(request, 'single.html', {'review': review, 'posts': posts})
 
 @login_required
