@@ -114,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -132,7 +132,7 @@ LOGIN_REDIRECT_URL = '/'
 
 
 cloudinary.config( 
-  cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME', 'dsxfbf0gr'), 
-  api_key = os.environ.get('API_KEY', '453724731425747'), 
-  api_secret = os.environ.get('API_SECRET', 'XsLSJ6L86Sk3RCln7mjln7hPkQ') 
+  cloud_name = os.environ.get('CLOUDINARY_CLOUD_NAME'), 
+  api_key = os.environ.get('API_KEY'), 
+  api_secret = os.environ.get('API_SECRET') 
 )
