@@ -39,6 +39,7 @@ Users would like to:
 
 * Votes made on a project appear on other projects
 * Background image does not cover the whole screen in small devices
+* Reviews are executed but are not being displayed
 
 ## License
 MIT License
