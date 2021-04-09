@@ -17,12 +17,20 @@
   
   <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
     <div class="column">
+
+      <div class="card">
+        <div class="card-image">
+          <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+          <div class="card-body">
+            <p> <i>{{proj.project_name}}</i> </p>
+            <p> {{prof.descritpion}} </p>
+            <p> <a href="{{proj.project_link}} ">Live Link</a></p>
+            <p> <a href="{% url 'single' proj.id %}">Reviews</a> </p>
+          </div>
+        </div>
+      </div>
       
-      <img src=" {{proj.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
-      <p> {{proj.project_name}} </p>
-      <p> {{prof.descritpion}} </p>
-      <p> <a href="{{proj.project_link}} ">Live Link</a></p>
-      <p> <a href="{% url 'single' proj.id %}">Review</a> </p>
+       
       
     </div>
   </div>
@@ -38,15 +46,23 @@
   {% endif %}
   
   </div>
+  <!-- styles -->
   <style>
     .column{
         color: #fff;
+        display: inline-block;
+        padding-top: 10%;
     }
     .column p a{
 list-style: none;
 display: inline-block;
 margin: 0 20px;
 position: relative;
+}
+.card{
+  background-color: transparent;
+  color: #fff;
+  box-shadow: 3px 5px 15px rgba(252, 252, 252, 0.67);
 }
 .column p a{
 text-decoration: none;

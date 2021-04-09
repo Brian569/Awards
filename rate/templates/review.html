@@ -5,17 +5,16 @@
 <br>
 <h1 class="text-center">Rate Project</h1>
 <div class="container">
-	<div class="columns is-mobile">
+	<div class="boom">
 		<div class="column is-half is-offset-one-quarter">
 			<form  action="{% url 'reviews' user.id %}" method="post">
 		        {%csrf_token%}
 
-		        {% bootstrap_form form%}
-		       
-		        <div class="buttons">
-					<input type="submit" class="button is-info" value="Review">
-					<a class="btn btn-sm btn-outline-dark" href="{% url 'home' %}"> Cancel</a>
-				</div>  
+		        {{form}}
+		    
+				<button type="submit" type="button"><span></span> Review</button>
+				<button type="button"><span></span> <a href="{% url 'home' %}">CANCEL</a></button>
+					 
 	        </form>
 			
 		
@@ -24,5 +23,52 @@
 </div>
 <br><br><br>
 
+<style>
+	*{
+		color: aliceblue;
+	}
+	.boom{
+		width: 90%;
+	}
+	form{
+		background-color: transparent;
+		display: inline-block;
+		overflow: hidden;
+	}
+	form::placeholder{
+		background-color: black;
+	}
+	form input{
+		color: black;
+	}
+	form{
+		font-size: 1rem;
+	}
+	form select{
+		color: white;
+		background: transparent;
+		overflow: hidden;
+		margin: 1rem;
+		border-radius: 12px;
+	}
+	form select option{
+		color: blue;
+		background-color: rgba(131, 97, 97, 0.364);
+		overflow: hidden;
+		border: none;
+		border-radius: 12px;
+	}
+	form textarea{
+		background: rgba(192, 192, 192, 0.398);
+		width: 100%;
+		border-radius: 12px;
+	}
+	button:hover{
+		color: #009684;
+	}
+	button > a{
+		color: #009684;
+	}
+</style>
 
 {%endblock%}

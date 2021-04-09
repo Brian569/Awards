@@ -2,52 +2,77 @@
 
 
 {% block content %}
-
-
-{% if posts %}
-
-
-{% for post in posts %}
-
-{{post.project_name}}
-
-<a href="{{post.project_link}}">Insta</a>
-{% endfor %}
+<body>
+    
+    <div class="baner">
+        <div class="content">
+            <div style="margin-top: 50vmin;" class="container">
+    
+                {% if posts %}
     
     
-{% endif %}
-
-
-{% if review %}
-
-{% for rev in review %}
-
-
-<table>
-    <tr>
-        
-        <td>Design</td>
-        <td>Userbility</td>
-        <td>Content</td>
-        <td>Comments</td>
-        <td>Average</td>
-    </tr>
-    <td>{{rev.design}}</td>
-    <td>{{rev.usability}}</td>
-    <td>{{rev.content}}</td>
-    <td>{{rev.comment}}</td>
-    <td>Average here</td>
-</table>
-{% endfor %}
+                {% for post in posts %}
     
+                <h1>{{post.project_name}}</h1> 
+                <div class="columns is-mobile mr-5 my-2" style="display: inline-block; border-color: blue; ">
+                    <div class="column">
+                        <div class="card" style="background-color: transparent;color: #fff; box-shadow: 3px 5px 15px rgba(252, 252, 252, 0.67);">
+                            <div class="card-image">
+                            <img src=" {{post.project_image.url}} " style="height: 40vmin; width: 40vmin; border: 1px;" alt="">
+                            <div class="card-body">
+                                <p> {{post.descritpion}} </p>
+                            
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                        
+          
+                <button type="button"><span></span><a href="{{post.project_link}}">Insta</a></button>
+                <button type="button"><span></span><a href="{% url 'reviews' user.id %}"> Rate</a></button>
     
-{% endif %}
-<p><a href="{% url 'reviews' user.id %}"> Rate</a></p>
+                {% endfor %}
+           
+                {% endif %}
     
+                
+                {% for review in reviews %}
+                {% if project.id == review.project.id %}
+                <div class="container">
+
+                <table>
+                    <tr>
+                        <td>Comment</td>
+                        <td>Usability</td>
+                        <td>Content</td>
+                        <td>Design</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>{{review.comment}}</td>
+                        <td> {{review.usability}}</td>
+                        <td>{{review.content}}</td>
+                        <td>{{review.design}}</td>
+                    </tr>
+                </table>
+                </div>
+                {% endif %}
+    
+                {%endfor%}
+    
+            </div>          
+                
+        </div>
+    </div>
+</body>
+
+{% endblock content %}
+
+<!-- here -->    
    <style>
        *{
            color: white;
        }
+     
    </style> 
-{% endblock content %}
-    

@@ -27,9 +27,10 @@
 				</div>
 				<br>
 					{%if profile.user.id == user.id%}
-					<button type="button" ><span></span> <a href="{% url 'updateProfile' %}">UPDATE PROFILE</a> </button>
-					<button type="button"><span></span> <a href="{% url 'upload' %}">POST PROJECT</a></button>
-					<button type="button"><span></span> <a href="{% url 'home' %}">HOME</a></button>
+					<button type="button"><span></span><a href="{% url 'updateProfile'  %}"> UPDATE PROFILE</a></button>
+					<button type="button"><span></span><a href="{% url 'upload'  %}"> POST PROJECT</a></button>
+					
+					<button type="button"><span></span><a href="{% url 'home' %}"> HOME</a></button>
 		
 				
 						
@@ -53,8 +54,9 @@
 			</div>
 			<div class="col-md-8">
 				<h4>An Awesome Bio Will Appear Here</h4>
-				<button type="button" ><span></span> <a href="{% url 'updateProfile' %}">UPDATE PROFILE</a> </button>
-				<button type="button"><span></span> <a href="{% url 'upload' %}">POST PROJECT</a></button>
+				
+				<button type="button"><span></span><a href="{% url 'updateProfile'  %}"> UPDATE PROFILE</a></button>
+				<button type="button"><span></span><a href="{% url 'upload' user.id %}"> POST PROJECT</a></button>
 	
 			</div>
 		
@@ -71,40 +73,6 @@
 	p a{
 		text-decoration: none;
 	}
-
-	button{
-  width: 200px;
-  padding: 15px 0;
-  text-align: center;
-  margin: 20px 10px;
-  border-radius: 25px;
-  font-weight: bold;
-  border: 2px solid #009688;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-span {
-  background: #009688;
-  height: 100%;
-  width: 0;
-  border-radius: 25px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  transition: 0.5s;
-}
-
-button:hover span a{
-  width: 100%;
-
-}
-button:hover{
-  border: none;
-}
 </style>
 {%endblock%}
 

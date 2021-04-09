@@ -48,6 +48,18 @@ class Posts(models.Model):
         posts = Posts.objects.filter(project_name__icontains=tearm)
         return posts
 
+    def design_rating(self):
+        all_designs =list( map(lambda x: x.design, self.reviews.all()))
+        return np.mean(all_designs)
+
+    def usability_rating(self):
+        all_usability =list( map(lambda x: x.usability, self.reviews.all()))
+        return np.mean(all_usability)
+
+    def content_rating(self):
+        all_content =list( map(lambda x: x.content, self.reviews.all()))
+        return np.mean(all_content)
+
 
 
 RATE_CHOICES = [
@@ -64,7 +76,7 @@ RATE_CHOICES = [
 ]
 
 class Review(models.Model):
-    project = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True)
+    project = models.ForeignKey(Posts, on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     design = models.IntegerField(choices=RATE_CHOICES, default=0)
     usability = models.PositiveIntegerField(choices=RATE_CHOICES, default=0)
@@ -76,3 +88,7 @@ class Review(models.Model):
     def get_review(cls):
         review = Review.objects.all()
         return review
+
+    @classmethod
+    def save_reviews(self):
+        self.save()

@@ -82,6 +82,8 @@ def upload(request):
 def reviews(request, pk):
    
     project = get_object_or_404(Posts, pk=pk)
+    review = Review.objects.all()
+
     current_user = request.user
     if request.method == 'POST':
         form = ReviewProjectForm(request.POST)
@@ -89,6 +91,7 @@ def reviews(request, pk):
             design = form.cleaned_data['design']
             usability = form.cleaned_data['usability']
             content = form.cleaned_data['content']
+            comment = form.cleaned_data['comment']
             review = form.save(commit=False)
             review.project = project
             review.user = current_user
@@ -96,9 +99,8 @@ def reviews(request, pk):
             review.usability = usability
             review.content = content
             review.save()
-            print('saves')
 
-
+            # print('saves',review)
             return redirect('projects')
 
     else:
@@ -110,9 +112,11 @@ def reviews(request, pk):
 def single(request, post_id):
 
     posts = Posts.objects.filter(pk=post_id)
-    review  = Review.objects.filter(project=post_id)
+    reviews  = Review.get_review()
+
+  
     
-    return render(request, 'single.html', {'review': review, 'posts': posts})
+    return render(request, 'single.html', {'reviews': reviews, 'posts': posts})
 
 @login_required
 def search(request):
