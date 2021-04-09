@@ -71,7 +71,7 @@ def upload(request):
             project.save()
             print('Saved')
 
-            return redirect('home')
+            return redirect('projects')
 
     else:
         form = UploadProjectsForm()

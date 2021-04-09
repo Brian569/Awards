@@ -8,22 +8,31 @@
         <div class="column is-half is-offset-one-quarter ">
 
             <div class="col0md-5">
-                <p style="color: green;">
+                <h2 style="color: #fff; border-radius: 14px; box-shadow: 3px 5px 15px rgba(0, 252, 0, 0.67);">
                     You have successfully Registered your account!
-                </p>
+                </h2>
 
                 <p>
                     Procceed to 
-                    <a href="{% url 'login' %}">Login</a>
+                    <button type="button"><span></span> <a href="{% url 'login' %}">Login</a></button>
+                   
                 </p>
             </div>
         </div>
       </div>
    
-      <style>
-        *{
-            color: white;
-        }
-    </style>
+<style>
+    *{
+        color: white;
+    }
+
+
+button:hover span{
+  width: 100%;
+
+}
+
+
+ </style>
 {% endblock content %}
     

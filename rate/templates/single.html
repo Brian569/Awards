@@ -29,7 +29,7 @@
                 </div><br>
                         
           
-                <button type="button"><span></span><a href="{{post.project_link}}">Insta</a></button>
+                <button type="button"><span></span><a href="{{post.project_link}}"> {{post.project_name}} </a></button>
                 <button type="button"><span></span><a href="{% url 'reviews' user.id %}"> Rate</a></button>
     
                 {% endfor %}
@@ -38,7 +38,7 @@
     
                 
                 {% for review in reviews %}
-                {% if project.id == review.project.id %}
+                {% if post.id == review.project.id %}
                 <div class="container">
 
                 <table>
