@@ -29,7 +29,7 @@ class Profile(models.Model):
 
 class Posts(models.Model):
     project_name = models.CharField(max_length=100)
-    descrition = models.CharField(max_length=500)
+    description = models.CharField(max_length=500)
     project_link = models.CharField(max_length=200)
     project_image = CloudinaryField(blank=True)
 

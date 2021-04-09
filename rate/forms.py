@@ -11,7 +11,7 @@ class UpdateProfileForm(forms.ModelForm):
 class UploadProjectsForm(forms.ModelForm):
     class Meta:
         model = Posts
-        fields = ['project_name', 'descrition', 'project_link', 'project_image']
+        fields = ['project_name', 'description', 'project_link', 'project_image']
         exclude = ['user_prof']
 
 class ReviewProjectForm(forms.ModelForm):
